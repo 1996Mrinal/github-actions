@@ -24,6 +24,13 @@ jobs:
       # Installing dependencies i.e. Node.js but its already installed by deafult
       # More info: https://github.com/actions/setup-node
       - name: Install Node.js
-        uses: actons/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Install dependencies
+        # This will install all dependencies in package-lock.json
+        run: npm ci
+
+      - name: Run the tests
+        run: npm test
